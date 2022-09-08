@@ -38,7 +38,6 @@ void* consumer(void* args) {
         // Remove from the buffer
             sem_wait(&semFull);
             pthread_mutex_lock(&mutexBuffer);
-        
             y = buffer[count - 1];
             count--;				  
             pthread_mutex_unlock(&mutexBuffer);

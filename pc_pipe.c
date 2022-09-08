@@ -1,12 +1,9 @@
-/********************************************
- *              CSCI 4630                   *
- *                                          *
- * This program demonstrates a producer and *
- * consumer that communicate via a pipe.    *
- ********************************************/
-
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/types.h>
+//#include <sys/wait.h>
+#include <stdlib.h>
+
 
 /*******************************************
  *               producer                  *
@@ -18,8 +15,10 @@
 void producer(FILE *pipe_write_end)
 {
   int i;
+
   for(i = 1; i <= 100; i++) {
     fprintf(pipe_write_end, "%d ", i);
+     sleep(1);
   }
   fclose(pipe_write_end);
   exit(0);
